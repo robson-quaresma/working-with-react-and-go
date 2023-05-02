@@ -25,6 +25,11 @@ function HelloWorld(props) {
                 </Fragment>
             }
             <hr />
+            {isTrue
+            ? <p>Is True</p>
+             : <p>Is False</p>   
+            }
+            <hr />
             <a href='#!' className='btn btn-outline-secondary' onClick={toggleTrue}>Toggle isTrue</a>
         </Fragment>
     );
