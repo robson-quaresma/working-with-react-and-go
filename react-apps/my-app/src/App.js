@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import './App.css';
+import Input from './Input';
 
 function App(props) {
 
@@ -69,6 +70,26 @@ function App(props) {
                             className='form-control'
                             onChange={(event) => setFirstName(event.target.value)} />
                     </div>
+
+                    <Input 
+                        title="Last Name"
+                        type="text"
+                        name="last-name"
+                        autoComplete="last-name-new"
+                        className="form-control"
+                        onChange={(event) => setLasName(event.target.value)}
+                    >
+                    </Input>
+
+                    <Input 
+                        title="Data of Birth"
+                        type="text"
+                        name="dob"
+                        autoComplete="dob-new"
+                        className="form-control"
+                        onChange={(event) => setDob(event.target.value)}
+                    >
+                    </Input>
                 </form>
 
                 <div>
