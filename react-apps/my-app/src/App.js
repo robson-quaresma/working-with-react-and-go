@@ -5,6 +5,9 @@ function App(props) {
 
     const [isTrue, setIsTrue] = useState(true);
     const [crowd, setCrowd] = useState([]);
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLasName] = useState("")
+    const [dob, setDob] = useState("")
 
     const toggleTrue = () => {
         if (isTrue) {
@@ -46,13 +49,35 @@ function App(props) {
                 </Fragment>
             }
             <hr />
-            {isTrue
-            ? <p>Is True</p>
-             : <p>Is False</p>   
-            }
+
+            {isTrue ? <p>Is True</p> : <p>Is False</p>}
+
             <hr />
+
             <a href='#!' className='btn btn-outline-secondary' onClick={toggleTrue}>Toggle isTrue</a>
+
             <hr />
+
+                <form autoComplete='off'>
+                    <div className='mb-3'>
+                        <label className='form-label' htmlFor='first-name'>First Name</label>
+                        <input 
+                            type='text' 
+                            name='first-name' 
+                            id='first-name' 
+                            autoComplete='first-name-new' 
+                            className='form-control'
+                            onChange={(event) => setFirstName(event.target.value)} />
+                    </div>
+                </form>
+
+                <div>
+                    First Name: {firstName} <br />
+                    Last Name: {lastName} <br />
+                    DOB: {dob} <br />
+                </div>
+            <hr />
+
             <h3>People</h3>
             <ul className='list-group'>
                 {crowd.map((m) => (
