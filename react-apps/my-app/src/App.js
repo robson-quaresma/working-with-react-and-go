@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import './App.css';
 import Input from './Input';
 
@@ -9,6 +9,8 @@ function App(props) {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLasName] = useState("")
     const [dob, setDob] = useState("")
+
+    const firstNameRef = useRef();
 
     const toggleTrue = () => {
         if (isTrue) {
@@ -69,6 +71,8 @@ function App(props) {
         setLasName("");
         setFirstName("");
         setDob("");
+
+        firstNameRef.current.value = "";
     }
 
 
@@ -100,6 +104,7 @@ function App(props) {
                             type='text' 
                             name='first-name' 
                             id='first-name' 
+                            ref={firstNameRef}
                             autoComplete='first-name-new' 
                             className='form-control'
                             onChange={(event) => setFirstName(event.target.value)} />
