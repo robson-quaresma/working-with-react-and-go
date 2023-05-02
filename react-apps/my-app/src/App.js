@@ -11,6 +11,8 @@ function App(props) {
     const [dob, setDob] = useState("")
 
     const firstNameRef = useRef();
+    const lastNameRef = useRef(null);
+    const dobRef = useRef(null);
 
     const toggleTrue = () => {
         if (isTrue) {
@@ -73,6 +75,8 @@ function App(props) {
         setDob("");
 
         firstNameRef.current.value = "";
+        lastNameRef.current.value = "";
+        dobRef.current.value = "";
     }
 
 
@@ -113,6 +117,7 @@ function App(props) {
                     <Input 
                         title="Last Name"
                         type="text"
+                        ref={lastNameRef}
                         name="last-name"
                         autoComplete="last-name-new"
                         className="form-control"
@@ -124,6 +129,7 @@ function App(props) {
                         title="Data of Birth"
                         type="date"
                         name="dob"
+                        ref={dobRef}
                         autoComplete="dob-new"
                         className="form-control"
                         onChange={(event) => setDob(event.target.value)}
