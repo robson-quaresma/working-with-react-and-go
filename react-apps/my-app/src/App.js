@@ -38,6 +38,40 @@ function App(props) {
         setCrowd(people)
     }, []);
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (lastName !== "") {
+            addPerson(firstName, lastName, dob);
+        }
+    }
+
+    const addPerson = (newFirst, newLast, newDob) => {
+        let newPerson = {
+            id: crowd.length + 1,
+            firstName: newFirst,
+            lastName: newLast,
+            dob: newDob,
+        }
+
+        const newList = crowd.concat(newPerson);
+        const sorted = newList.sort((a, b) => {
+            if (a.lastName < b.lastName) {
+                return -1;
+            } else if (a.lastName > b.lastName) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        setCrowd(sorted);
+        setLasName("");
+        setFirstName("");
+        setDob("");
+    }
+
+
     return(
         <Fragment>
             <hr />
@@ -59,7 +93,7 @@ function App(props) {
 
             <hr />
 
-                <form autoComplete='off'>
+                <form autoComplete='off' onSubmit={handleSubmit}>
                     <div className='mb-3'>
                         <label className='form-label' htmlFor='first-name'>First Name</label>
                         <input 
@@ -83,13 +117,15 @@ function App(props) {
 
                     <Input 
                         title="Data of Birth"
-                        type="text"
+                        type="date"
                         name="dob"
                         autoComplete="dob-new"
                         className="form-control"
                         onChange={(event) => setDob(event.target.value)}
                     >
                     </Input>
+
+                    <input type='submit' value="Submit" className='btn btn-primary' />
                 </form>
 
                 <div>
