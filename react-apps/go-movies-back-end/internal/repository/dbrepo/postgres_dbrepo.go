@@ -28,7 +28,7 @@ func (m *PostgresDBRepo) AllMovies() ([]*models.Movie, error) {
 			created_at, updated_at
 		from 
 			movies
-		ordery by
+		order by
 			title
 	`
 
