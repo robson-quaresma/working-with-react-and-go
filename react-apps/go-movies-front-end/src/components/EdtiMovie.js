@@ -119,6 +119,12 @@ const EditMovie = () => {
                 errorMsg={'Please select a Description'}
                 errorDiv={hasErrors('description') ? "text-danger" : "d-none"} 
                 />
+            <hr />
+
+            <h3>Genres</h3>
+
+            
+
             </form>
         </div>
     );
