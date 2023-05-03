@@ -10,8 +10,19 @@ function App() {
   const navigate = useNavigate();
 
   const logOut = () => {
-    setJwtToken("");
-    navigate("/");
+    const requestOptions = {
+      method: "GET",
+      credentials: "include",
+    }
+    fetch(`/logout`, requestOptions)
+    .catch(err => {
+      console.log(err)
+    })
+    .finally(() => {
+      setJwtToken("");
+    })
+
+    navigate("/login");
   }
 
   useEffect(() => {
