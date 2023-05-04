@@ -167,8 +167,6 @@ const EditMovie = () => {
             .catch((error) => {
                 console.log(error);
             });
-
-
     }
 
     const handleChange = () => (event) => {

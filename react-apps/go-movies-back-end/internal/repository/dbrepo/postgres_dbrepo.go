@@ -4,6 +4,7 @@ import (
 	"backend/internal/models"
 	"context"
 	"database/sql"
+	"log"
 	"time"
 )
 
@@ -324,6 +325,7 @@ func (m *PostgresDBRepo) InsertMovie(movie models.Movie) (int, error) {
 		movie.Image).Scan(&newID)
 
 	if err != nil {
+		log.Println(err)
 		return 0, err
 	}
 

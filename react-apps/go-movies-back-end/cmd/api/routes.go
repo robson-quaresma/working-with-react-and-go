@@ -29,7 +29,7 @@ func (app *application) routes() http.Handler {
 		mux.Use(app.authRequired)
 
 		mux.Get("/movies", app.MovieCatalog)
-		mux.Get("/admin/{id}", app.MovieForEdit)
+		mux.Get("/movies/{id}", app.MovieForEdit)
 		mux.Put("/movies/0", app.InsertMovie)
 	})
 
