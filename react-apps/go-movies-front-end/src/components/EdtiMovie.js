@@ -285,6 +285,7 @@ const EditMovie = () => {
                     title={'MPAA Rating'}
                     name={'mpaa_rating'}
                     label={'MPAA Rating'}
+                    value={movie.mpaa_rating}
                     options={mpaaOptions}
                     onChange={handleChange('mpaa_rating')}
                     placeHolder={'Choose...'}
