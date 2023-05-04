@@ -4,13 +4,14 @@ import Input from './form/Input';
 import Select from './form/Select';
 import TextArea from './form/TextArea';
 import Checkbox from './form/Checkbox';
+import Swal from 'sweetalert2';
 
 const EditMovie = () => {
 
     const navigate = useNavigate();
     const {jwtToken} = useOutletContext();
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
     const [errors, setErrors] = useState([]);
 
     const mpaaOptions = [
@@ -112,6 +113,16 @@ const EditMovie = () => {
             }
         });
 
+        if (movie.genres_array.length === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: 'Please select at least one genre',
+                title: 'Error!',
+                confirmButtonText: 'OK',
+            })
+            errors.push("genres_array");
+        }
+
         setErrors(errors);
 
         if (errors.length > 0) {
@@ -154,7 +165,7 @@ const EditMovie = () => {
         <div>
             <h2>Add/Edit Movie</h2>
             <hr />
-            <pre>{JSON.stringify(movie, null, 3)}</pre>
+            {/* <pre>{JSON.stringify(movie, null, 3)}</pre> */}
 
             <form onSubmit={handleSubmit}>
                 <input type="hidden" name="id" value={movie.id} id='id' />
