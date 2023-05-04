@@ -70,8 +70,8 @@ func (m *PostgresDBRepo) OneMovie(id int) (*models.Movie, error) {
 	defer cancel()
 
 	query := `select id, title, release_date, runtime, mpaa_rating,
-	description, coalesce(image, ''), created_at, updated_at from movies where id = $1
-	`
+	description, coalesce(image, ''), created_at, updated_at 
+	from movies where id = $1`
 
 	row := m.DB.QueryRowContext(ctx, query, id)
 
@@ -94,7 +94,7 @@ func (m *PostgresDBRepo) OneMovie(id int) (*models.Movie, error) {
 	}
 
 	// get genre, if any
-	query = `select g.id, g.genre from movie_genre mg
+	query = `select g.id, g.genre from movies_genres mg
 	left join genres g on (mg.genre_id = g.id)
 	where mg.movie_id = $1
 	order by g.genre`
@@ -131,8 +131,8 @@ func (m *PostgresDBRepo) OneMovieForEdit(id int) (*models.Movie, []*models.Genre
 	defer cancel()
 
 	query := `select id, title, release_date, runtime, mpaa_rating,
-	description, coalesce(image, ''), created_at, updated_at from movies where id = $1
-	`
+	description, coalesce(image, ''), created_at, updated_at 
+	from movies where id = $1`
 
 	row := m.DB.QueryRowContext(ctx, query, id)
 
@@ -155,7 +155,7 @@ func (m *PostgresDBRepo) OneMovieForEdit(id int) (*models.Movie, []*models.Genre
 	}
 
 	// get genre, if any
-	query = `select g.id, g.genre from movie_genre mg
+	query = `select g.id, g.genre from movies_genres mg
 	left join genres g on (mg.genre_id = g.id)
 	where mg.movie_id = $1
 	order by g.genre`
